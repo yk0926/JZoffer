@@ -1,6 +1,6 @@
 package history;
 
-public class demo01 {
+public class demo2 {
 
     public static void main(String[] args) {
         int[] arr1={3,5,7,2,8,8,15,3};

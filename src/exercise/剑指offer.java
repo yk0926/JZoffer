@@ -7,7 +7,6 @@ import java.util.*;
 
 public class 剑指offer {
     //003-从尾到头打印链表
-    @Test
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
         Stack<Integer> stack = new Stack();
         ArrayList<Integer> rs = new ArrayList<>();
@@ -27,7 +26,6 @@ public class 剑指offer {
     }
 
     //014-链表中倒数第k个结点
-    @Test
     public ListNode FindKthToTail(ListNode head, int k) {
         ListNode pre = new ListNode(-1);
         ListNode cur = new ListNode(-1);
@@ -544,25 +542,12 @@ public class 剑指offer {
     }
 
     //061-序列化二叉树
-    StringBuilder sb = new StringBuilder();
     int index=-1;
     String Serialize(TreeNode root) {
         if(root==null){
             return "#";
         }
-        preOrder(root);
-        return sb.toString();
-    }
-    void preOrder(TreeNode node){
-        if(node!=null){
-            sb.append(node.val).append("!");
-        }else {
-            sb.append("#!");
-            return;
-        }
-            preOrder(node.left);
-            preOrder(node.right);
-
+        return root.val+"!"+Serialize(root.left)+"!"+Serialize(root.right);
     }
     TreeNode Deserialize(String str) {
         String[] strs = str.split("!");
@@ -577,6 +562,29 @@ public class 剑指offer {
             node.right=Deserialize(str);
         }
         return node;
+    }
+
+    //062-二叉搜索树的第k个结点
+    ArrayList<TreeNode> list62 = new ArrayList<>();
+    TreeNode KthNode(TreeNode pRoot, int k)
+    {
+        if(pRoot==null){
+            return null;
+        }
+        infixOrder(pRoot);
+        if(list62.size()<k||k==0){
+            return null;
+        }
+
+        return list62.get(k-1);
+    }
+    void infixOrder(TreeNode Node){
+        if (Node.left!=null){
+            infixOrder(Node.left);
+        }
+        list62.add(Node);
+        if(Node.right!=null)
+            infixOrder(Node.right);
     }
 
 }

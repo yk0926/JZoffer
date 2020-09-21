@@ -1,7 +1,7 @@
 package history;
 
 import java.util.Scanner;
-public class Main {
+public class demo7 {
     public static void main(String[] args) {
         char[][] board ={
                 {'A','B','C','E'},
